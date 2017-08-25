@@ -1,10 +1,19 @@
 from firebase import firebase
-
+import threading
 import cv2
 import numpy as np
 import math
 
 firebase = firebase.FirebaseApplication('https://esp8266-31217.firebaseio.com/', None)
+
+class myThread (threading.Thread):
+    def __init__(self, name, counter):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.counter = counter
+    def run(self):
+        firebase.put('demo',self.name, self.counter)
+
 
 cap = cv2.VideoCapture(0)
 result_old = 0;
@@ -94,26 +103,35 @@ while(cap.isOpened()):
     # define actions required
     if count_defects == 1:
         if(count_defects != result_old):
-            firebase.put('demo', "led_1", 1)
+            thread1 = myThread("led_1", 1)
+            thread1.start()
             result_old = 1;
     elif count_defects == 2:
         if (count_defects != result_old):
-            firebase.put('demo', "led_2", 1)
+            thread2 = myThread("led_2", 1)
+            thread2.start()
             result_old = 2;
     elif count_defects == 3:
         if (count_defects != result_old):
-            firebase.put('demo', "led_3", 1)
+            thread3 = myThread("led_3", 1)
+            thread3.start()
             result_old = 3;
     elif count_defects == 4:
         if (count_defects != result_old):
-            firebase.put('demo', "led_4", 1)
+            thread4 = myThread("led_4", 1)
+            thread4.start()
             result_old = 4;
     else:
         if (count_defects != result_old):
-            firebase.put('demo', "led_1", 0)
-            firebase.put('demo', "led_2", 0)
-            firebase.put('demo', "led_3", 0)
-            firebase.put('demo', "led_4", 0)
+            thread1 = myThread("led_1", 0)
+            thread2 = myThread("led_2", 0)
+            thread3 = myThread("led_3", 0)
+            thread4 = myThread("led_4", 0)
+            thread1.start()
+            thread2.start()
+            thread3.start()
+            thread4.start()
+
             result_old = 0;
 
     # show appropriate images in windows

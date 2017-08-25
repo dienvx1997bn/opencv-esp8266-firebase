@@ -24,7 +24,7 @@ def print_time(threadName, delay, counter):
 
 # Tao cac thread moi
 thread1 = myThread(1, "Thread-1", 1)
-thread2 = myThread(2, "Thread-2", 2)
+thread2 = myThread(2, "Thread-2", 1)
 
 # Bat dau cac thread moi
 thread1.start()
