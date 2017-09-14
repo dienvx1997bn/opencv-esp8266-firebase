@@ -6,8 +6,6 @@ import cv2
 import win32com.client as comctl
 import win32com.client as comclt
 wsh= comclt.Dispatch("WScript.Shell")
-wsh.AppActivate("google.com") # select another application
-
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
