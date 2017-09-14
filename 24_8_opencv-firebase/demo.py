@@ -14,9 +14,9 @@ class myThread (threading.Thread):
     def run(self):
         firebase.put('demo',self.name, self.counter)
 
-
 cap = cv2.VideoCapture(0)
 result_old = 0;
+
 while(cap.isOpened()):
     # read image
     ret, img = cap.read()
@@ -122,7 +122,7 @@ while(cap.isOpened()):
             thread4.start()
             result_old = 4;
     else:
-        if (count_defects != result_old):
+        # if (count_defects != result_old):
             thread1 = myThread("led_1", 0)
             thread2 = myThread("led_2", 0)
             thread3 = myThread("led_3", 0)
@@ -131,7 +131,6 @@ while(cap.isOpened()):
             thread2.start()
             thread3.start()
             thread4.start()
-
             result_old = 0;
 
     # show appropriate images in windows

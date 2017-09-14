@@ -17,7 +17,7 @@ thread1 = myThread("Thread-1", 1)
 thread2 = myThread("Thread-2", 2)
 
 # Bat dau cac thread moi
-thread1.start()
+
 thread2.start()
 
 print "Ket thuc Main Thread"
