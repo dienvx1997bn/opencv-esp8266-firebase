@@ -129,7 +129,7 @@ while(cap.isOpened()):
             thread4 = myThread("led_4", 0)
             thread1.start()
             thread2.start()
-            thread3.start()
+            thread3.start()q
             thread4.start()
             result_old = 0;
 

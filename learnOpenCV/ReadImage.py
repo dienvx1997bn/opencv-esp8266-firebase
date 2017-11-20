@@ -1,4 +1,4 @@
 import numpy as nm
 import cv2
 
-img = cv2.imread()
+print cv2.__version__
